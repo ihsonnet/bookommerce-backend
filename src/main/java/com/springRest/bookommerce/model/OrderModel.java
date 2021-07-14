@@ -15,9 +15,9 @@ import javax.persistence.Id;
 @ToString
 public class OrderModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderId;
-    private String username;
+    private String userName;
     private String bookName;
     private Double bookPrice;
 }

@@ -1,14 +1,16 @@
 package com.springRest.bookommerce.services;
+import com.springRest.bookommerce.dto.ApiResponse;
 import com.springRest.bookommerce.model.BookModel;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface BookService {
-    List<BookModel> getBookList();
+    ResponseEntity<ApiResponse<List<BookModel>>> getBookList();
 
-    BookModel addBook(BookModel bookModel);
+    ResponseEntity<ApiResponse<BookModel>> addBook(BookModel bookModel);
 
-    String deleteBook(Long bookId);
+    ResponseEntity<ApiResponse<String>> deleteBook(Long bookId);
 
-    BookModel editBook(Long bookId, BookModel bookModel);
+    ResponseEntity<ApiResponse<BookModel>> editBook(Long bookId, BookModel bookModel);
 }

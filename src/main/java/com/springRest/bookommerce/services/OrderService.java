@@ -1,11 +1,13 @@
 package com.springRest.bookommerce.services;
 
+import com.springRest.bookommerce.dto.ApiResponse;
 import com.springRest.bookommerce.model.OrderModel;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface OrderService {
-    String placeOrder(OrderModel orderModel);
+    ResponseEntity<ApiResponse<OrderModel>> placeOrder(OrderModel orderModel);
 
-    List<OrderModel> getOrderList();
+    ResponseEntity<ApiResponse<List<OrderModel>>> getOrderList();
 }

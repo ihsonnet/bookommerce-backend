@@ -1,8 +1,10 @@
 package com.springRest.bookommerce.controller;
 
+import com.springRest.bookommerce.dto.ApiResponse;
 import com.springRest.bookommerce.model.BookModel;
 import com.springRest.bookommerce.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,22 +16,22 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping("/book")
-    public List<BookModel> getBookList(){
+    public ResponseEntity<ApiResponse<List<BookModel>>> getBookList(){
         return bookService.getBookList();
     }
 
-    @PostMapping("/book")
-    public BookModel addBook(@RequestBody BookModel bookModel){
-        return  bookService.addBook(bookModel);
+    @PostMapping("/admin/book")
+    public ResponseEntity<ApiResponse<BookModel>> addBook(@RequestBody BookModel bookModel){
+       return bookService.addBook(bookModel);
     }
 
-    @DeleteMapping("/book/{bookId}")
-    public String deleteBook(@PathVariable Long bookId){
+    @DeleteMapping("/admin/book/{bookId}")
+    public ResponseEntity<ApiResponse<String>>  deleteBook(@RequestHeader(name = "Authorization") @PathVariable Long bookId){
         return bookService.deleteBook(bookId);
     }
 
-    @PutMapping("/book/{bookId}")
-    public BookModel editBook(@PathVariable Long bookId, @RequestBody BookModel bookModel){
+    @PutMapping("/admin/book/{bookId}")
+    public ResponseEntity<ApiResponse<BookModel>> editBook(@RequestHeader(name = "Authorization") @PathVariable Long bookId, @RequestBody BookModel bookModel){
         return bookService.editBook(bookId, bookModel);
     }
 
